@@ -1,0 +1,27 @@
+body{
+    /*position: relative;*/
+}
+.box {
+    position: relative;
+    /*left: 25%;*/
+    /*-webkit-transform: translate(-50%,-50%);*/
+    /*-moz-transform: translate(-50%,-50%);*/
+    /*-ms-transform: translate(-50%,-50%);*/
+    /*transform: translate(-50%,-50%);*/
+    /*transform: translate(50%);*/
+    width: 1000px;
+    height:300px;
+    /*margin-left: 200px;*/
+    background-color: #ccc;
+    /*border-top: 1px solid red;*/
+}
+.corner{
+    width: 100px;
+    height: 200px;
+    background-color: deeppink;
+    position: absolute;
+    margin-left: 50%;
+    /*top: 50%;*/
+    /*margin-;*/
+    /*transform: translateX(-50%);*/
+}
