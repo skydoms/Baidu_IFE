@@ -7,12 +7,6 @@
         li{
             list-style: none;
         }
-        /*.square-warp{*/
-            /*margin-top: 20px;*/
-            /*text-align: center;*/
-            /*line-height: 100px;*/
-            /*color: #fff;*/
-        /*}*/
         .square {
             float: left;
             margin-right: 20px;
@@ -65,14 +59,20 @@
             }else if(node == 'right'){
                 alert('删除数字：' + result.lastChild.innerHTML);
                 result.removeChild(result.lastChild);
+            }else{
+                alert("删除数字：" +result.removeChild(node).innerText +"！");
             }
         }
 
         leftAdd.onclick = function(){
             func('left');
+            aqiDisplay.value = '';
+            aqiDisplay.focus();
         }
         rightAdd.onclick = function () {
             func('right');
+            aqiDisplay.value = '';
+            aqiDisplay.focus();
         }
 
         leftRemove.onclick = function(){
@@ -80,6 +80,10 @@
         }
         rightRemove.onclick = function () {
             del('right');
+        }
+
+        result.onclick = function () {
+            del(event.target)
         }
 
     </script>
