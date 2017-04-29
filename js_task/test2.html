@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .father {
+            display: flex;
+            flex-direction: row;
+        }
+        ul li {
+            float: left;
+            height: 45px;
+            width: 45px;
+            background: red;
+            color: white;
+            margin-left: 10px;
+            text-align: center;
+            line-height: 45px;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" id="output">
+    <button id="btnLeftIn">左侧入</button>
+    <button id="btnRightIn">右侧入</button>
+    <button id="btnLeftOut">左侧出</button>
+    <button id="btnRightOut">右侧出</button>
+</div>
+<ul id="num">
+
+</ul>
+
+<script>
+    var op = document.getElementById('output')
+    var btnLI = document.getElementById('btnLeftIn')
+    var btnRI = document.getElementById('btnRightIn')
+    var btnLO = document.getElementById('btnLeftOut')
+    var btnRO = document.getElementById('btnRightOut')
+    var numList = document.getElementById('num')
+    var liList = document.getElementsByTagName('li')
+    function testLeftIn(){
+        if(op.value == ''){
+            alert('请输入内容')
+        }else if((!isNaN(op.value))&&(parseInt(op.value)>9)&&(parseInt(op.value)<101)){
+            var addLi = document.createElement('li');
+            addLi.innerHTML = op.value;
+            numList.appendChild(addLi);
+            op.value = "";
+        }else{
+            alert('请重新输入一10-100的个数字')
+        }
+        if(liList.length>3){
+            alert('1')
+        }
+    }
+
+    function testRightIn(){
+        if(op.value == ''){
+            alert('请输入内容')
+        }else if((!isNaN(op.value))&&(parseInt(op.value)>9)&&(parseInt(op.value)<101)){
+            var addLi = document.createElement('li')
+            addLi.innerHTML = op.value
+            numList.insertBefore(addLi,numList.firstChild)
+            op.value = ""
+        }else{
+            alert('请重新输入一个10-100的数字')
+        }
+    }
+    function testLeftOut (){
+        var leftRemove = liList[0]
+        leftRemove.remove()
+        alert("删除的数字为"+leftRemove.innerHTML)
+    }
+    function testRightOut (){
+        var rightRemove = liList[liList.length-1]
+        rightRemove.remove()
+        alert("删除的数字为"+rightRemove.innerHTML)
+    }
+
+    btnRI.onclick = function (){
+        testLeftIn()
+    }
+    btnLI.onclick = function (){
+        testRightIn()
+    }
+    btnLO.onclick = function (){
+        testLeftOut()
+    }
+    btnRO.onclick = function (){
+        testRightOut()
+    }
+
+    numList.addEventListener('click',function(e){
+        if(event.target.nodeName.toLowerCase()=="li"){
+            numList.removeChild(event.target);
+        }
+    })
+</script>
+</body>
+</html>

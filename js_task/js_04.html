@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_04</title>
+    <style>
+        li{
+            list-style: none;
+        }
+        /*.square-warp{*/
+            /*margin-top: 20px;*/
+            /*text-align: center;*/
+            /*line-height: 100px;*/
+            /*color: #fff;*/
+        /*}*/
+        .square {
+            float: left;
+            margin-right: 20px;
+            text-align: center;
+            line-height: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: #666;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <input  id="aqi-display" type="text">
+    <button id="left-add">左侧入</button>
+    <button id="right-add">右侧入</button>
+    <button id="left-remove">左侧出</button>
+    <button id="right-remove">右侧出</button>
+    <ul id="result">
+
+    </ul>
+    <script>
+        var 
+            aqiDisplay = document.querySelector('#aqi-display'),
+            leftAdd    = document.querySelector('#left-add'),
+            rightAdd   = document.querySelector('#right-add'),
+            leftRemove = document.querySelector('#left-remove'),
+            rightRemove= document.querySelector('#right-remove'),
+            result     = document.querySelector('#result');
+
+        function func(addPost) {
+            if( isNaN(aqiDisplay.value)){
+                alert('请输入数字');
+            }else{
+                var node  = document.createElement('li');
+                node.className = 'square';
+                node.innerHTML = aqiDisplay.value;
+                if(addPost == 'left'){
+                    result.insertBefore(node,result.firstChild);
+                }else if(addPost == 'right') {
+                    result.appendChild(node);
+                }
+            }
+        }
+
+        function del(node) {
+            if(node == 'left'){
+                alert('删除数字:' + result.firstChild.innerText);
+                result.removeChild(result.firstChild);
+            }else if(node == 'right'){
+                alert('删除数字：' + result.lastChild.innerHTML);
+                result.removeChild(result.lastChild);
+            }
+        }
+
+        leftAdd.onclick = function(){
+            func('left');
+        }
+        rightAdd.onclick = function () {
+            func('right');
+        }
+
+        leftRemove.onclick = function(){
+            del('left');
+        }
+        rightRemove.onclick = function () {
+            del('right');
+        }
+
+    </script>
+</body>
+</html>
